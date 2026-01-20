@@ -1,11 +1,5 @@
-//
-//  SwipeableCardsView.swift
-//  Zbam
-//
-//  Created by Yagiz Gunes Teker on 20.01.26.
-//
-
 import SwiftUI
+import Combine
 
 struct SwipeableCardsView: View {
     class Model: ObservableObject {
@@ -44,7 +38,7 @@ struct SwipeableCardsView: View {
     @State private var cardRotation: Double = 0
     
     private let swipeThreshold: CGFloat = 100.0
-    private let rotationFactor: Double = 35.0
+    private let rotationFactor: Double = 35.0 // This remains constant and should be fine
     
     var action: (Model) -> Void
     
@@ -85,13 +79,13 @@ struct SwipeableCardsView: View {
                                         withAnimation(.easeOut(duration: 0.5)) {
                                             self.dragState.width = self.dragState.width > 0 ? 1000 : -1000
                                         }
-                                        DispatchQueue.main.asyncAfter(deadline: .now + 0.5) {
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                             self.model.removeTopCard()
                                             self.dragState = .zero
                                         }
                                     } else {
                                         withAnimation(.spring()) {
-                                            self.drageState = .zero
+                                            self.dragState = .zero
                                             self.cardRotation = 0
                                         }
                                     }

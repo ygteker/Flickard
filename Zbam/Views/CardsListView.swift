@@ -16,12 +16,12 @@ struct CardsListView: View {
     var body: some View {
         NavigationStack {
             List {
-                ForEach(cards, id: \.id) { card in
-                    NavigationLink(destination: CardView(card: card)) {
-                        Text(card.front)
-                    }
-                }
-                .onDelete(perform: deleteCard)
+//                ForEach(cards, id: \.id) { card in
+//                    NavigationLink(destination: CardView()) {
+//                        Text(card.front)
+//                    }
+//                }
+//                .onDelete(perform: deleteCard)
             }
             
             .navigationTitle("Cards")

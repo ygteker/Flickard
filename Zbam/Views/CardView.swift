@@ -14,7 +14,7 @@ struct CardView: View {
     }
     
     struct Model: Identifiable, Equatable {
-        let id: UUID = UUID()
+        let id = UUID()
         let text: String
         var swipeDirection: SwipeDirection = .none
     }
@@ -24,10 +24,6 @@ struct CardView: View {
     var dragOffset: CGSize
     var isTopCard: Bool
     var isSecondCard: Bool
-    
-    let card: Card
-    @State private var isPresentingEditView: Bool = false
-    @State private var flipped: Bool = false
     
     var body: some View {
         Text(model.text)
