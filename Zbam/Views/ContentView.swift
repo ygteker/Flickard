@@ -11,10 +11,10 @@ struct ContentView: View {
     var body: some View {
         VStack {
             let cards = [
-                CardView.Model(text: "Card 1"),
-                CardView.Model(text: "Card 2"),
-                CardView.Model(text: "Card 3"),
-                CardView.Model(text: "Card 4")
+                CardView.Model(front: "Card 1front", back: "Card1 back"),
+                CardView.Model(front: "Card 2", back: "Card 2 back"),
+                CardView.Model(front: "Card 3", back: "Card 3 back"),
+                CardView.Model(front: "Card 4", back: "Card 4 back")
             ]
             
             let model = SwipeableCardsView.Model(cards: cards)

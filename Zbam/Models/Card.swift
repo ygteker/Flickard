@@ -18,5 +18,6 @@ class Card: Identifiable {
         self.id = UUID()
         self.front = front
         self.back = back
+        
     }
 }

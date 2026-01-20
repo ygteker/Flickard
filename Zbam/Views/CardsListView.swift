@@ -16,12 +16,19 @@ struct CardsListView: View {
     var body: some View {
         NavigationStack {
             List {
-//                ForEach(cards, id: \.id) { card in
-//                    NavigationLink(destination: CardView()) {
-//                        Text(card.front)
-//                    }
-//                }
-//                .onDelete(perform: deleteCard)
+                ForEach(cards, id: \.id) { card in
+                    Text(card.front)
+                }
+                .onDelete(perform: deleteCard)
+                let newCards = cards.map { CardView.Model(front: $0.front, back: $0.back)}
+                let model = SwipeableCardsView.Model(cards: newCards)
+                NavigationLink("Start Swiping") {
+                    SwipeableCardsView(model: model) { model in
+                        print(model.swipedCards)
+                        model.reset()
+                    }
+                }
+                .padding(12)
             }
             
             .navigationTitle("Cards")
