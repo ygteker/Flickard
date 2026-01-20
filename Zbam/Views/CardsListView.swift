@@ -15,11 +15,15 @@ struct CardsListView: View {
     
     var body: some View {
         NavigationStack {
-            List(cards, id: \.id) { card in
-                NavigationLink(destination: CardView(card: card)) {
-                    Text(card.front)
+            List {
+                ForEach(cards, id: \.id) { card in
+                    NavigationLink(destination: CardView(card: card)) {
+                        Text(card.front)
+                    }
                 }
+                .onDelete(perform: deleteCard)
             }
+            
             .navigationTitle("Cards")
             .toolbar {
                 Button(action: {
@@ -36,6 +40,12 @@ struct CardsListView: View {
                         .navigationTitle("Create New Card")
                 }
             }
+        }
+    }
+    private func deleteCard(at offsets: IndexSet) {
+        for index in offsets {
+            let card = cards[index]
+            modelContext.delete(card)
         }
     }
 }
