@@ -11,6 +11,7 @@ struct CardSampleData: PreviewModifier {
     static func makeSharedContext() async throws -> ModelContainer {
         let container = try ModelContainer(for: Card.self, configurations: .init(isStoredInMemoryOnly: true))
         Card.sampleData.forEach { container.mainContext.insert($0) }
+        try? container.mainContext.save()  // Save the inserted data!
         return container
     }
     

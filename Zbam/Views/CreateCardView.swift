@@ -9,9 +9,10 @@ import SwiftUI
 import SwiftData
 
 struct CreateCardView: View {
-    @Environment(\.modelContext) private var modelContext
+    @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
 
+//    @State private var store: CardStore? = nil
     @State private var frontValue: String = ""
     @State private var backValue: String = ""
 
@@ -42,14 +43,16 @@ struct CreateCardView: View {
                 }
             }
         }
+//        .onAppear {
+//            if store == nil { store = CardStore(context: context) }
+//        }
     }
     
     func submitValues() {
+//        try? store?.addCard(cardId: UUID(), front: frontValue, back: backValue)
         let card = Card(front: frontValue, back: backValue)
-        modelContext.insert(card)
-
-        frontValue = ""
-        backValue = ""
+        context.insert(card)
+        try? context.save()
     }
 }
 

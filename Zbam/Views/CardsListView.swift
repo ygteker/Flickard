@@ -12,16 +12,24 @@ struct CardsListView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \Card.front) private var cards: [Card]
     @State private var isAddingCard: Bool = false
+    @State private var editingCard: Card? = nil
     
     var body: some View {
         NavigationStack {
             List {
                 ForEach(cards, id: \.id) { card in
-                    NavigationLink(destination: CardView(card: card)) {
-                        Text(card.front)
-                    }
+                    Text(card.front)
+                        .swipeActions(edge: .leading) {
+                            Button {
+                                editingCard = card
+                            } label: {
+                                Label("Edit", systemImage: "note.text")
+                            }
+                            .tint(.blue)
+                        }
                 }
                 .onDelete(perform: deleteCard)
+                let newCards = cards.map { CardView.Model(id: $0.id, front: $0.front, back: $0.back)}
             }
             
             .navigationTitle("Cards")
@@ -40,6 +48,12 @@ struct CardsListView: View {
                         .navigationTitle("Create New Card")
                 }
             }
+            .sheet(item: $editingCard) { card in
+                NavigationStack {
+                    CardEditView(card: card)
+                        .navigationTitle("Edit Card")
+                }
+            }
         }
     }
     private func deleteCard(at offsets: IndexSet) {
@@ -47,6 +61,7 @@ struct CardsListView: View {
             let card = cards[index]
             modelContext.delete(card)
         }
+        try? modelContext.save()
     }
 }
 
