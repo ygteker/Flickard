@@ -29,7 +29,6 @@ struct ContentView: View {
                 }
                 let model = SwipeableCardsView.Model(cards: cards)
                 SwipeableCardsView(model: model) { model in
-                    print(model.swipedCards)
                     model.reset()
                 }
             }

@@ -30,14 +30,6 @@ struct CardsListView: View {
                 }
                 .onDelete(perform: deleteCard)
                 let newCards = cards.map { CardView.Model(id: $0.id, front: $0.front, back: $0.back)}
-//                let model = SwipeableCardsView.Model(cards: newCards)
-//                NavigationLink("Start Swiping") {
-//                    SwipeableCardsView(model: model) { model in
-//                        print(model.swipedCards)
-//                        model.reset()
-//                    }
-//                }
-//                .padding(12)
             }
             
             .navigationTitle("Cards")
@@ -62,9 +54,6 @@ struct CardsListView: View {
                         .navigationTitle("Edit Card")
                 }
             }
-        }
-        .onAppear {
-            print("DEBUG: Cards count: \(cards.count)")  // Add this
         }
     }
     private func deleteCard(at offsets: IndexSet) {
