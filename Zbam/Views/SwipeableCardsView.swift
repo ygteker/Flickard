@@ -1,5 +1,6 @@
 import SwiftUI
 import Combine
+import SwiftData
 
 struct SwipeableCardsView: View {
     class Model: ObservableObject {
@@ -47,6 +48,12 @@ struct SwipeableCardsView: View {
     
     var body: some View {
         GeometryReader { geometry in
+            LinearGradient(
+                colors: [Color(red: 255/255, green: 228/255, blue:229/255),
+                        Color(red: 0/255, green: 91/255, blue: 95/255),],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
             if model.unswipedCards.isEmpty && model.swipedCards.isEmpty {
                 
                 emptyCardsView
@@ -56,7 +63,8 @@ struct SwipeableCardsView: View {
                     .frame(width: geometry.size.width, height: geometry.size.height)
             } else {
                 ZStack {
-                    Color.white.ignoresSafeArea()
+                    Color.clear
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                     ForEach(model.unswipedCards.reversed(), id: \.id) { card in
                         let isTop = card == model.unswipedCards.first
                         let isSecond = card == model.unswipedCards.dropFirst().first
@@ -96,12 +104,11 @@ struct SwipeableCardsView: View {
                                     }
                                 }
                         )
-                        .animation(.easeInOut, value: dragState)
                     }
                 }
-                .padding()
             }
         }
+        .ignoresSafeArea()
         .onAppear {
             if store == nil { store = CardStore(context: context) }
         }
@@ -137,19 +144,17 @@ struct SwipeableCardsView: View {
                     .foregroundColor(.white)
                     .cornerRadius(10)
             }
-//            Button(action: {
-//                NavigationLink(destination: CardsListView) {
-//                    EmptyView()
-//                }
-//                .hidden
-//            }) {
-//                Text("Return to List")
-//                    .font(.headline)
-//                    .frame(width: 200, height: 50)
-//                    .background(Color.accentColor)
-//                    .foregroundColor(.white)
-//                    .cornerRadius(10)
-//            }
         }
     }
 }
+#Preview {
+    SwipeableCardsView(model: SwipeableCardsView.Model(cards: [
+        CardView.Model(id: UUID(), front: "What is SwiftUI?", back: "A declarative framework for building UIs"),
+        CardView.Model(id: UUID(), front: "What is Swift?", back: "A powerful programming language by Apple"),
+        CardView.Model(id: UUID(), front: "What is Xcode?", back: "Apple's IDE for development")
+    ])) { model in
+        model.reset()
+    }
+    .modelContainer(for: [Card.self], inMemory: true)
+}
+

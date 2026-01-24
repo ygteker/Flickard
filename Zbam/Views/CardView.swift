@@ -32,18 +32,18 @@ struct CardView: View {
         let flipDegrees = flipped ? 180.0 : 0
         ZStack {
             Text(model.front)
-                .frame(width: size.width * 0.8, height: size.height * 0.8)
-                .background(Color.white)
+                .frame(width: size.width * 0.8, height: size.height * 0.6)
+                .background(Color(red: 247/255, green: 245/255, blue: 245/255))
                 .cornerRadius(12.0)
-                .shadow(color: isTopCard ? getShadowColor() : (isSecondCard && dragOffset.width != 0 ? Color.gray.opacity(0.2) : Color.clear), radius: 10, x: 0, y: 3)
+                .shadow(color: isTopCard ? getShadowColor() : (isSecondCard && dragOffset.width != 0 ? Color.gray.opacity(0.2) : Color.clear), radius: 10, x: 0, y: 12)
                 .foregroundColor(.black)
                 .font(.largeTitle)
                 .padding()
                 .flipRotate(flipDegrees)
                 .opacity(isTopCard ? flipped ? 0.0 : 1.0 : 0.0)
             Text(model.back)
-                .frame(width: size.width * 0.8, height: size.height * 0.8)
-                .background(Color.white)
+                .frame(width: size.width * 0.8, height: size.height * 0.6)
+                .background(Color(red: 247/255, green: 245/255, blue: 245/255))
                 .cornerRadius(12.0)
                 .shadow(color: isTopCard ? getShadowColor() : (isSecondCard && dragOffset.width != 0 ? Color.gray.opacity(0.2) : Color.clear), radius: 10, x: 0, y: 3)
                 .foregroundColor(.black)
@@ -52,7 +52,7 @@ struct CardView: View {
                 .flipRotate(-180 + flipDegrees)
                 .opacity(flipped ? 1.0 : 0.0)
         }
-        .animation(.easeInOut(duration: 0.8), value: flipped)
+        .animation(.easeInOut(duration: 0.5), value: flipped)
         .onTapGesture {
             flipped.toggle()
         }
@@ -74,3 +74,45 @@ extension View {
         return rotation3DEffect(Angle(degrees: degrees), axis: (x: 0.0, y: 1.0, z: 0.0))
     }
 }
+#Preview("Top Card - No Drag") {
+    CardView(
+        model: CardView.Model(
+            id: UUID(),
+            front: "What is SwiftUI?",
+            back: "A declarative framework for building user interfaces"
+        ),
+        size: CGSize(width: 400, height: 600),
+        dragOffset: .zero,
+        isTopCard: true,
+        isSecondCard: false
+    )
+}
+
+#Preview("Top Card - Dragging Right") {
+    CardView(
+        model: CardView.Model(
+            id: UUID(),
+            front: "What is SwiftUI?",
+            back: "A declarative framework for building user interfaces"
+        ),
+        size: CGSize(width: 400, height: 600),
+        dragOffset: CGSize(width: 80, height: 0),
+        isTopCard: true,
+        isSecondCard: false
+    )
+}
+
+#Preview("Top Card - Dragging Left") {
+    CardView(
+        model: CardView.Model(
+            id: UUID(),
+            front: "What is SwiftUI?",
+            back: "A declarative framework for building user interfaces"
+        ),
+        size: CGSize(width: 400, height: 600),
+        dragOffset: CGSize(width: -80, height: 0),
+        isTopCard: true,
+        isSecondCard: false
+    )
+}
+
