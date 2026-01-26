@@ -35,12 +35,15 @@ struct PrivacyPolicyView: View {
                     BulletPoint(text: "App settings and preferences")
                     Text("This data never leaves your device and is not accessible to us or any third parties.")
                     
-                    SectionHeader(title: "Analytics")
+                    SectionHeader(title: "Analytics and Logging")
                     Text("We may collect anonymous usage data and crash reports through Apple's built-in analytics system to improve app performance and stability. This data includes:")
                     BulletPoint(text: "Device model and iOS version")
                     BulletPoint(text: "Crash reports and performance metrics")
-                    BulletPoint(text: "General app usage statistics")
+                    BulletPoint(text: "General app usage statistics (e.g., navigation patterns, feature usage)")
                     Text("This data is collected only if you have opted in to share analytics with Apple in your device settings (Settings → Privacy & Security → Analytics & Improvements).")
+                    Text("The app uses local logging for debugging purposes. These logs remain on your device and are only accessible to Apple if you share diagnostic data, or if you manually provide them when reporting a bug.")
+                        .font(.callout)
+                        .foregroundStyle(.secondary)
                     Text("This data is anonymous and cannot be used to identify you personally.")
                         .italic()
                 }
