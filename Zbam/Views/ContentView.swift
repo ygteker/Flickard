@@ -43,19 +43,29 @@ struct ContentView: View {
             }
             .tag(1)
 
-            // Placeholder settings tab
+            // Stats tab
             StatsView()
                 .tabItem {
                     Image(systemName: "chart.pie.fill")
                     Text("Stats")
                 }
                 .tag(2)
+
+            // Packs tab
+            ContentPacksTabView()
+                .tabItem {
+                    Image(systemName: "square.stack.3d.up.fill")
+                    Text("Packs")
+                }
+                .tag(3)
+
+            // Settings tab
             SettingsView()
-            .tabItem {
-                Image(systemName: "gear")
-                Text("Settings")
-            }
-            .tag(3)
+                .tabItem {
+                    Image(systemName: "gear")
+                    Text("Settings")
+                }
+                .tag(4)
         }
         .onChange(of: selectedTab) { oldValue, newValue in
             AppLogger.ui.info("Tab changed from \(oldValue) to \(newValue)")

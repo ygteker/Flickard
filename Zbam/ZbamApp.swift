@@ -26,6 +26,6 @@ struct ZbamApp: App {
             ContentView()
                 .preferredColorScheme(darkMode ? .dark : .light)
         }
-        .modelContainer(for: Card.self)
+        .modelContainer(for: [Card.self, UserPackProgress.self])
     }
 }

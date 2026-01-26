@@ -7,6 +7,7 @@
 import SwiftData
 import Combine
 import SwiftUI
+import OSLog
 
 @MainActor
 @Observable
@@ -43,6 +44,39 @@ final class CardStore: ObservableObject {
     
     func getAllCards() throws -> [Card] {
         return try context.fetch(FetchDescriptor<Card>())
+    }
+
+    /// Add multiple cards from a pack in a single transaction
+    func addCardsFromPack(_ packCards: [PackCard], progress: UserPackProgress) throws {
+        for packCard in packCards {
+            let card = packCard.toCard()
+            context.insert(card)
+            progress.markAsAdded(cardId: packCard.id)
+        }
+        try context.save()
+        AppLogger.packs.info("Bulk added \(packCards.count) cards from pack")
+    }
+
+    /// Add a single card from a pack and update progress
+    func addCardFromPack(_ packCard: PackCard, progress: UserPackProgress) throws {
+        let card = packCard.toCard()
+        context.insert(card)
+        progress.markAsAdded(cardId: packCard.id)
+        try context.save()
+        AppLogger.packs.info("Added card \(packCard.id) from pack \(packCard.packId)")
+    }
+
+    /// Get or create a UserPackProgress for a given pack ID
+    func getOrCreateProgress(for packId: String) throws -> UserPackProgress {
+        let descriptor = FetchDescriptor<UserPackProgress>(
+            predicate: #Predicate { $0.packId == packId }
+        )
+        if let existing = try context.fetch(descriptor).first {
+            return existing
+        }
+        let newProgress = UserPackProgress(packId: packId)
+        context.insert(newProgress)
+        return newProgress
     }
 }
 

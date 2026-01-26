@@ -1,0 +1,31 @@
+{
+  "packs": [
+    {
+      "id": "german-a1-basics",
+      "name": "German A1 Basics",
+      "description": "Essential everyday German words and phrases for beginners. Perfect for starting your German learning journey.",
+      "category": "basics",
+      "difficultyLevel": "beginner",
+      "cardCount": 20,
+      "iconName": "star.fill"
+    },
+    {
+      "id": "german-a1-verbs",
+      "name": "German A1 Verbs",
+      "description": "Common German verbs with conjugations. Master the most frequently used verbs in everyday conversation.",
+      "category": "verbs",
+      "difficultyLevel": "beginner",
+      "cardCount": 15,
+      "iconName": "arrow.triangle.2.circlepath"
+    },
+    {
+      "id": "german-a2-vocabulary",
+      "name": "German A2 Vocabulary",
+      "description": "Expand your German vocabulary with intermediate-level words for daily life, work, and travel.",
+      "category": "vocabulary",
+      "difficultyLevel": "elementary",
+      "cardCount": 25,
+      "iconName": "text.book.closed.fill"
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "pack": {
+    "id": "german-a1-basics",
+    "name": "German A1 Basics",
+    "description": "Essential everyday German words and phrases for beginners. Perfect for starting your German learning journey.",
+    "category": "basics",
+    "difficultyLevel": "beginner",
+    "cardCount": 20,
+    "iconName": "star.fill"
+  },
+  "cards": [
+    {
+      "id": "001",
+      "packId": "german-a1-basics",
+      "front": "the table",
+      "back": "der Tisch",
+      "tags": ["furniture", "home"],
+      "hint": "Masculine noun (der)",
+      "example": "Der Tisch ist groß."
+    },
+    {
+      "id": "002",
+      "packId": "german-a1-basics",
+      "front": "the chair",
+      "back": "der Stuhl",
+      "tags": ["furniture", "home"],
+      "hint": "Masculine noun (der)",
+      "example": "Der Stuhl ist bequem."
+    },
+    {
+      "id": "003",
+      "packId": "german-a1-basics",
+      "front": "the house",
+      "back": "das Haus",
+      "tags": ["building", "home"],
+      "hint": "Neuter noun (das)",
+      "example": "Das Haus ist alt."
+    },
+    {
+      "id": "004",
+      "packId": "german-a1-basics",
+      "front": "the water",
+      "back": "das Wasser",
+      "tags": ["drink", "nature"],
+      "hint": "Neuter noun (das)",
+      "example": "Das Wasser ist kalt."
+    },
+    {
+      "id": "005",
+      "packId": "german-a1-basics",
+      "front": "the bread",
+      "back": "das Brot",
+      "tags": ["food"],
+      "hint": "Neuter noun (das)",
+      "example": "Das Brot ist frisch."
+    },
+    {
+      "id": "006",
+      "packId": "german-a1-basics",
+      "front": "the apple",
+      "back": "der Apfel",
+      "tags": ["food", "fruit"],
+      "hint": "Masculine noun (der)",
+      "example": "Der Apfel ist rot."
+    },
+    {
+      "id": "007",
+      "packId": "german-a1-basics",
+      "front": "the book",
+      "back": "das Buch",
+      "tags": ["education", "object"],
+      "hint": "Neuter noun (das)",
+      "example": "Das Buch ist interessant."
+    },
+    {
+      "id": "008",
+      "packId": "german-a1-basics",
+      "front": "the woman",
+      "back": "die Frau",
+      "tags": ["people"],
+      "hint": "Feminine noun (die)",
+      "example": "Die Frau liest ein Buch."
+    },
+    {
+      "id": "009",
+      "packId": "german-a1-basics",
+      "front": "the man",
+      "back": "der Mann",
+      "tags": ["people"],
+      "hint": "Masculine noun (der)",
+      "example": "Der Mann arbeitet."
+    },
+    {
+      "id": "010",
+      "packId": "german-a1-basics",
+      "front": "the child",
+      "back": "das Kind",
+      "tags": ["people", "family"],
+      "hint": "Neuter noun (das)",
+      "example": "Das Kind spielt."
+    },
+    {
+      "id": "011",
+      "packId": "german-a1-basics",
+      "front": "good morning",
+      "back": "Guten Morgen",
+      "tags": ["greeting", "phrase"],
+      "hint": "Used until around noon",
+      "example": "Guten Morgen, wie geht es Ihnen?"
+    },
+    {
+      "id": "012",
+      "packId": "german-a1-basics",
+      "front": "good evening",
+      "back": "Guten Abend",
+      "tags": ["greeting", "phrase"],
+      "hint": "Used from late afternoon",
+      "example": "Guten Abend, mein Freund."
+    },
+    {
+      "id": "013",
+      "packId": "german-a1-basics",
+      "front": "thank you",
+      "back": "Danke",
+      "tags": ["courtesy", "phrase"],
+      "hint": "Can add 'schön' for 'thank you very much'",
+      "example": "Danke für Ihre Hilfe."
+    },
+    {
+      "id": "014",
+      "packId": "german-a1-basics",
+      "front": "please / you're welcome",
+      "back": "Bitte",
+      "tags": ["courtesy", "phrase"],
+      "hint": "Used for both meanings depending on context",
+      "example": "Bitte schön!"
+    },
+    {
+      "id": "015",
+      "packId": "german-a1-basics",
+      "front": "yes",
+      "back": "Ja",
+      "tags": ["basic", "phrase"],
+      "hint": null,
+      "example": "Ja, ich verstehe."
+    },
+    {
+      "id": "016",
+      "packId": "german-a1-basics",
+      "front": "no",
+      "back": "Nein",
+      "tags": ["basic", "phrase"],
+      "hint": null,
+      "example": "Nein, danke."
+    },
+    {
+      "id": "017",
+      "packId": "german-a1-basics",
+      "front": "the dog",
+      "back": "der Hund",
+      "tags": ["animal"],
+      "hint": "Masculine noun (der)",
+      "example": "Der Hund ist treu."
+    },
+    {
+      "id": "018",
+      "packId": "german-a1-basics",
+      "front": "the cat",
+      "back": "die Katze",
+      "tags": ["animal"],
+      "hint": "Feminine noun (die)",
+      "example": "Die Katze schläft."
+    },
+    {
+      "id": "019",
+      "packId": "german-a1-basics",
+      "front": "the car",
+      "back": "das Auto",
+      "tags": ["transport", "vehicle"],
+      "hint": "Neuter noun (das)",
+      "example": "Das Auto ist schnell."
+    },
+    {
+      "id": "020",
+      "packId": "german-a1-basics",
+      "front": "the friend",
+      "back": "der Freund / die Freundin",
+      "tags": ["people", "social"],
+      "hint": "der Freund (male) / die Freundin (female)",
+      "example": "Mein Freund kommt heute."
+    }
+  ]
+}

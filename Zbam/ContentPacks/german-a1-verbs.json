@@ -1,0 +1,148 @@
+{
+  "pack": {
+    "id": "german-a1-verbs",
+    "name": "German A1 Verbs",
+    "description": "Common German verbs with conjugations. Master the most frequently used verbs in everyday conversation.",
+    "category": "verbs",
+    "difficultyLevel": "beginner",
+    "cardCount": 15,
+    "iconName": "arrow.triangle.2.circlepath"
+  },
+  "cards": [
+    {
+      "id": "v001",
+      "packId": "german-a1-verbs",
+      "front": "to be",
+      "back": "sein",
+      "tags": ["irregular", "essential"],
+      "hint": "ich bin, du bist, er/sie/es ist",
+      "example": "Ich bin müde."
+    },
+    {
+      "id": "v002",
+      "packId": "german-a1-verbs",
+      "front": "to have",
+      "back": "haben",
+      "tags": ["irregular", "essential"],
+      "hint": "ich habe, du hast, er/sie/es hat",
+      "example": "Ich habe einen Hund."
+    },
+    {
+      "id": "v003",
+      "packId": "german-a1-verbs",
+      "front": "to go",
+      "back": "gehen",
+      "tags": ["regular", "motion"],
+      "hint": "ich gehe, du gehst, er/sie/es geht",
+      "example": "Ich gehe nach Hause."
+    },
+    {
+      "id": "v004",
+      "packId": "german-a1-verbs",
+      "front": "to come",
+      "back": "kommen",
+      "tags": ["regular", "motion"],
+      "hint": "ich komme, du kommst, er/sie/es kommt",
+      "example": "Woher kommen Sie?"
+    },
+    {
+      "id": "v005",
+      "packId": "german-a1-verbs",
+      "front": "to make / to do",
+      "back": "machen",
+      "tags": ["regular", "essential"],
+      "hint": "ich mache, du machst, er/sie/es macht",
+      "example": "Was machst du heute?"
+    },
+    {
+      "id": "v006",
+      "packId": "german-a1-verbs",
+      "front": "to eat",
+      "back": "essen",
+      "tags": ["irregular", "food"],
+      "hint": "ich esse, du isst, er/sie/es isst",
+      "example": "Ich esse gern Pizza."
+    },
+    {
+      "id": "v007",
+      "packId": "german-a1-verbs",
+      "front": "to drink",
+      "back": "trinken",
+      "tags": ["regular", "food"],
+      "hint": "ich trinke, du trinkst, er/sie/es trinkt",
+      "example": "Ich trinke Kaffee."
+    },
+    {
+      "id": "v008",
+      "packId": "german-a1-verbs",
+      "front": "to speak / to talk",
+      "back": "sprechen",
+      "tags": ["irregular", "communication"],
+      "hint": "ich spreche, du sprichst, er/sie/es spricht",
+      "example": "Sprechen Sie Deutsch?"
+    },
+    {
+      "id": "v009",
+      "packId": "german-a1-verbs",
+      "front": "to see",
+      "back": "sehen",
+      "tags": ["irregular", "perception"],
+      "hint": "ich sehe, du siehst, er/sie/es sieht",
+      "example": "Ich sehe einen Film."
+    },
+    {
+      "id": "v010",
+      "packId": "german-a1-verbs",
+      "front": "to read",
+      "back": "lesen",
+      "tags": ["irregular", "education"],
+      "hint": "ich lese, du liest, er/sie/es liest",
+      "example": "Ich lese ein Buch."
+    },
+    {
+      "id": "v011",
+      "packId": "german-a1-verbs",
+      "front": "to write",
+      "back": "schreiben",
+      "tags": ["regular", "communication"],
+      "hint": "ich schreibe, du schreibst, er/sie/es schreibt",
+      "example": "Ich schreibe einen Brief."
+    },
+    {
+      "id": "v012",
+      "packId": "german-a1-verbs",
+      "front": "to sleep",
+      "back": "schlafen",
+      "tags": ["irregular", "daily"],
+      "hint": "ich schlafe, du schläfst, er/sie/es schläft",
+      "example": "Ich schlafe acht Stunden."
+    },
+    {
+      "id": "v013",
+      "packId": "german-a1-verbs",
+      "front": "to work",
+      "back": "arbeiten",
+      "tags": ["regular", "work"],
+      "hint": "ich arbeite, du arbeitest, er/sie/es arbeitet",
+      "example": "Ich arbeite in Berlin."
+    },
+    {
+      "id": "v014",
+      "packId": "german-a1-verbs",
+      "front": "to live (reside)",
+      "back": "wohnen",
+      "tags": ["regular", "home"],
+      "hint": "ich wohne, du wohnst, er/sie/es wohnt",
+      "example": "Wo wohnen Sie?"
+    },
+    {
+      "id": "v015",
+      "packId": "german-a1-verbs",
+      "front": "to learn",
+      "back": "lernen",
+      "tags": ["regular", "education"],
+      "hint": "ich lerne, du lernst, er/sie/es lernt",
+      "example": "Ich lerne Deutsch."
+    }
+  ]
+}

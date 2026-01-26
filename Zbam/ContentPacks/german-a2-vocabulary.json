@@ -1,0 +1,238 @@
+{
+  "pack": {
+    "id": "german-a2-vocabulary",
+    "name": "German A2 Vocabulary",
+    "description": "Expand your German vocabulary with intermediate-level words for daily life, work, and travel.",
+    "category": "vocabulary",
+    "difficultyLevel": "elementary",
+    "cardCount": 25,
+    "iconName": "text.book.closed.fill"
+  },
+  "cards": [
+    {
+      "id": "a2v001",
+      "packId": "german-a2-vocabulary",
+      "front": "the appointment",
+      "back": "der Termin",
+      "tags": ["work", "time"],
+      "hint": "Masculine noun (der)",
+      "example": "Ich habe einen Termin beim Arzt."
+    },
+    {
+      "id": "a2v002",
+      "packId": "german-a2-vocabulary",
+      "front": "the meeting",
+      "back": "die Besprechung",
+      "tags": ["work", "office"],
+      "hint": "Feminine noun (die)",
+      "example": "Die Besprechung beginnt um 10 Uhr."
+    },
+    {
+      "id": "a2v003",
+      "packId": "german-a2-vocabulary",
+      "front": "the experience",
+      "back": "die Erfahrung",
+      "tags": ["work", "personal"],
+      "hint": "Feminine noun (die)",
+      "example": "Ich habe viel Erfahrung."
+    },
+    {
+      "id": "a2v004",
+      "packId": "german-a2-vocabulary",
+      "front": "the opportunity",
+      "back": "die Gelegenheit",
+      "tags": ["work", "abstract"],
+      "hint": "Feminine noun (die)",
+      "example": "Das ist eine gute Gelegenheit."
+    },
+    {
+      "id": "a2v005",
+      "packId": "german-a2-vocabulary",
+      "front": "the decision",
+      "back": "die Entscheidung",
+      "tags": ["abstract", "important"],
+      "hint": "Feminine noun (die)",
+      "example": "Das war eine schwere Entscheidung."
+    },
+    {
+      "id": "a2v006",
+      "packId": "german-a2-vocabulary",
+      "front": "the suggestion",
+      "back": "der Vorschlag",
+      "tags": ["communication", "work"],
+      "hint": "Masculine noun (der)",
+      "example": "Ich habe einen Vorschlag."
+    },
+    {
+      "id": "a2v007",
+      "packId": "german-a2-vocabulary",
+      "front": "the restaurant",
+      "back": "das Restaurant",
+      "tags": ["food", "place"],
+      "hint": "Neuter noun (das)",
+      "example": "Das Restaurant ist sehr gut."
+    },
+    {
+      "id": "a2v008",
+      "packId": "german-a2-vocabulary",
+      "front": "the train station",
+      "back": "der Bahnhof",
+      "tags": ["travel", "transport"],
+      "hint": "Masculine noun (der)",
+      "example": "Der Bahnhof ist in der Nähe."
+    },
+    {
+      "id": "a2v009",
+      "packId": "german-a2-vocabulary",
+      "front": "the airport",
+      "back": "der Flughafen",
+      "tags": ["travel", "transport"],
+      "hint": "Masculine noun (der)",
+      "example": "Wir fahren zum Flughafen."
+    },
+    {
+      "id": "a2v010",
+      "packId": "german-a2-vocabulary",
+      "front": "the ticket",
+      "back": "die Fahrkarte",
+      "tags": ["travel", "transport"],
+      "hint": "Feminine noun (die) - for transport",
+      "example": "Ich brauche eine Fahrkarte."
+    },
+    {
+      "id": "a2v011",
+      "packId": "german-a2-vocabulary",
+      "front": "the weather",
+      "back": "das Wetter",
+      "tags": ["nature", "daily"],
+      "hint": "Neuter noun (das)",
+      "example": "Das Wetter ist schön heute."
+    },
+    {
+      "id": "a2v012",
+      "packId": "german-a2-vocabulary",
+      "front": "the vacation",
+      "back": "der Urlaub",
+      "tags": ["travel", "time"],
+      "hint": "Masculine noun (der)",
+      "example": "Ich bin im Urlaub."
+    },
+    {
+      "id": "a2v013",
+      "packId": "german-a2-vocabulary",
+      "front": "the hobby",
+      "back": "das Hobby",
+      "tags": ["leisure", "personal"],
+      "hint": "Neuter noun (das)",
+      "example": "Mein Hobby ist Lesen."
+    },
+    {
+      "id": "a2v014",
+      "packId": "german-a2-vocabulary",
+      "front": "the health",
+      "back": "die Gesundheit",
+      "tags": ["health", "important"],
+      "hint": "Feminine noun (die)",
+      "example": "Gesundheit ist wichtig."
+    },
+    {
+      "id": "a2v015",
+      "packId": "german-a2-vocabulary",
+      "front": "the medicine",
+      "back": "das Medikament",
+      "tags": ["health", "pharmacy"],
+      "hint": "Neuter noun (das)",
+      "example": "Ich nehme ein Medikament."
+    },
+    {
+      "id": "a2v016",
+      "packId": "german-a2-vocabulary",
+      "front": "the doctor",
+      "back": "der Arzt / die Ärztin",
+      "tags": ["health", "profession"],
+      "hint": "der Arzt (male) / die Ärztin (female)",
+      "example": "Der Arzt hilft mir."
+    },
+    {
+      "id": "a2v017",
+      "packId": "german-a2-vocabulary",
+      "front": "the problem",
+      "back": "das Problem",
+      "tags": ["abstract", "common"],
+      "hint": "Neuter noun (das)",
+      "example": "Das ist kein Problem."
+    },
+    {
+      "id": "a2v018",
+      "packId": "german-a2-vocabulary",
+      "front": "the solution",
+      "back": "die Lösung",
+      "tags": ["abstract", "common"],
+      "hint": "Feminine noun (die)",
+      "example": "Wir finden eine Lösung."
+    },
+    {
+      "id": "a2v019",
+      "packId": "german-a2-vocabulary",
+      "front": "the answer",
+      "back": "die Antwort",
+      "tags": ["communication", "common"],
+      "hint": "Feminine noun (die)",
+      "example": "Ich warte auf eine Antwort."
+    },
+    {
+      "id": "a2v020",
+      "packId": "german-a2-vocabulary",
+      "front": "the question",
+      "back": "die Frage",
+      "tags": ["communication", "common"],
+      "hint": "Feminine noun (die)",
+      "example": "Ich habe eine Frage."
+    },
+    {
+      "id": "a2v021",
+      "packId": "german-a2-vocabulary",
+      "front": "the neighbor",
+      "back": "der Nachbar / die Nachbarin",
+      "tags": ["people", "home"],
+      "hint": "der Nachbar (male) / die Nachbarin (female)",
+      "example": "Mein Nachbar ist freundlich."
+    },
+    {
+      "id": "a2v022",
+      "packId": "german-a2-vocabulary",
+      "front": "the customer",
+      "back": "der Kunde / die Kundin",
+      "tags": ["work", "business"],
+      "hint": "der Kunde (male) / die Kundin (female)",
+      "example": "Der Kunde ist zufrieden."
+    },
+    {
+      "id": "a2v023",
+      "packId": "german-a2-vocabulary",
+      "front": "the boss",
+      "back": "der Chef / die Chefin",
+      "tags": ["work", "office"],
+      "hint": "der Chef (male) / die Chefin (female)",
+      "example": "Mein Chef ist nett."
+    },
+    {
+      "id": "a2v024",
+      "packId": "german-a2-vocabulary",
+      "front": "the colleague",
+      "back": "der Kollege / die Kollegin",
+      "tags": ["work", "office"],
+      "hint": "der Kollege (male) / die Kollegin (female)",
+      "example": "Meine Kollegin hilft mir."
+    },
+    {
+      "id": "a2v025",
+      "packId": "german-a2-vocabulary",
+      "front": "the success",
+      "back": "der Erfolg",
+      "tags": ["work", "positive"],
+      "hint": "Masculine noun (der)",
+      "example": "Viel Erfolg bei der Prüfung!"
+    }
+  ]
+}
