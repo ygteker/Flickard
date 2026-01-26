@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import OSLog
 
 struct ContentView: View {
     @State private var selectedTab: Int = 0
@@ -49,38 +50,33 @@ struct ContentView: View {
                     Text("Stats")
                 }
                 .tag(2)
-            NavigationStack {
-                List {
-                    Section("General") {
-                        Toggle("Example toggle", isOn: .constant(true))
-                    }
-                }
-                .navigationTitle("Settings")
-            }
+            SettingsView()
             .tabItem {
                 Image(systemName: "gear")
                 Text("Settings")
             }
             .tag(3)
         }
+        .onChange(of: selectedTab) { oldValue, newValue in
+            AppLogger.ui.info("Tab changed from \(oldValue) to \(newValue)")
+        }
         .onChange(of: storedCards) { oldValue, newValue in
+            AppLogger.data.info("Cards updated. Count: \(newValue.count)")
             // Update the model when cards change (added/edited/deleted)
             initializeSwipeableModel()
         }
     }
     
     private func initializeSwipeableModel() {
+        AppLogger.cards.info("Initializing swipeable model with \(self.storedCards.count) cards")
+        
         let cards: [CardView.Model] = storedCards.map { card in
             CardView.Model(id: card.id, front: card.front, back: card.back)
         }
         
-        // If model already exists, preserve its state but update cards if needed
-        if swipeableModel == nil {
-            swipeableModel = SwipeableCardsView.Model(cards: cards)
-        } else {
-            // Optionally update the original cards while preserving swiped state
-            // For now, we'll keep the existing model to preserve state
-        }
+        // Always create a new model to reflect current card state
+        swipeableModel = SwipeableCardsView.Model(cards: cards)
+        AppLogger.cards.info("Created/updated swipeable model with \(cards.count) cards")
     }
 }
 #Preview("ContentView") {
