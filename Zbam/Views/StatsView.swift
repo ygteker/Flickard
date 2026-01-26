@@ -51,6 +51,8 @@ struct StatsView: View {
                         
                         if let sector = selectedSector {
                             detailsList(for: sector)
+                        } else {
+                            hintView
                         }
                     }
                 }
@@ -117,6 +119,24 @@ struct StatsView: View {
     }
     
     // MARK: - Details List
+    
+    private var hintView: some View {
+        HStack(spacing: 8) {
+            Image(systemName: "hand.tap")
+                .foregroundStyle(.secondary)
+            Text("Tap on the chart to see detailed statistics")
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+        }
+        .padding()
+        .frame(maxWidth: .infinity)
+        .background {
+            RoundedRectangle(cornerRadius: 12)
+                .fill(.ultraThinMaterial)
+        }
+        .padding(.horizontal)
+        .transition(.opacity.combined(with: .scale))
+    }
     
     private func detailsList(for sector: SwipeSector) -> some View {
         VStack(alignment: .leading, spacing: 8) {
