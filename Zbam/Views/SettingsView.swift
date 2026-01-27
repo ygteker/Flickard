@@ -123,16 +123,23 @@ struct SettingsView: View {
             // Fetch all cards
             let descriptor = FetchDescriptor<Card>()
             let allCards = try modelContext.fetch(descriptor)
-            
+
             // Delete each card
             for card in allCards {
                 modelContext.delete(card)
             }
-            
+
+            // Clear all pack progress (so cards show as "unadded" again)
+            let progressDescriptor = FetchDescriptor<UserPackProgress>()
+            let allProgress = try modelContext.fetch(progressDescriptor)
+            for progress in allProgress {
+                progress.addedCardIds.removeAll()
+            }
+
             // Save changes
             try modelContext.save()
-            
-            print("Successfully deleted \(allCards.count) cards")
+
+            print("Successfully deleted \(allCards.count) cards and cleared pack progress")
         } catch {
             print("Failed to delete cards: \(error.localizedDescription)")
         }
