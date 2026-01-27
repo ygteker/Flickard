@@ -1,10 +1,3 @@
-//
-//  AppLogger.swift
-//  Zbam
-//
-//  Created by Yagiz Gunes Teker on 26.01.26.
-//
-
 import OSLog
 
 /// Centralized logging for the Zbam app

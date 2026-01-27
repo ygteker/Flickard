@@ -1,10 +1,3 @@
-//
-//  CardsView.swift
-//  Zbam
-//
-//  Created by Yagiz Gunes Teker on 17.01.26.
-//
-
 import SwiftUI
 import SwiftData
 

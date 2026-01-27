@@ -1,10 +1,3 @@
-//
-//  StatsView.swift
-//  Zbam
-//
-//  Created by Yagiz Gunes Teker on 22.01.26.
-//
-
 import SwiftUI
 import SwiftData
 import Charts

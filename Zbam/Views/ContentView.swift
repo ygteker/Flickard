@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  Zbam
-//
-//  Created by Yagiz Gunes Teker on 20.01.26.
-//
-
 import SwiftUI
 import SwiftData
 import OSLog

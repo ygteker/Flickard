@@ -5,13 +5,13 @@ import Combine
 /// Service for loading content packs from the app bundle
 @MainActor
 final class ContentPackLoader: ObservableObject {
-    static let shared = ContentPackLoader()
+    static let shared = ContentPackLoader() // singleton pattern
 
     /// Cached manifest
-    @Published private(set) var manifest: PackManifest?
+    @Published private(set) var manifest: PackManifest? // set makes it writible only in this class
 
     /// Cached pack files (packId -> PackFile)
-    private var packCache: [String: PackFile] = [:]
+    private var packCache: [String: PackFile] = [:] // dictionary definition String <-> PackFile, [:] = empty dict
 
     /// Error state
     @Published private(set) var loadError: Error?

@@ -7,9 +7,9 @@ import FoundationModels
 #endif
 
 /// Engine that generates personalized card suggestions based on user's learning patterns
-@MainActor
+@MainActor // needed for this to be running on the main thread
 final class SuggestionEngine {
-    static let shared = SuggestionEngine()
+    static let shared = SuggestionEngine() // singleton pattern
 
     /// Suggestion output with reasoning
     struct SuggestionResult {
@@ -41,7 +41,7 @@ final class SuggestionEngine {
         }
     }
 
-    private init() {}
+    private init() {} // guarentees singleton pattern
 
     // MARK: - Main Suggestion Generation
 

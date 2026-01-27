@@ -1,9 +1,3 @@
-//
-//  SettingsView.swift
-//  Zbam
-//
-//  Created by Yagiz Gunes Teker on 24.01.26.
-//
 import SwiftUI
 import SwiftData
 

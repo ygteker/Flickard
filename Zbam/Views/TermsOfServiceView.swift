@@ -1,10 +1,3 @@
-//
-//  TermsOfServiceView.swift
-//  Zbam
-//
-//  Created by Yagiz Gunes Teker on 26.01.26.
-//
-
 import SwiftUI
 
 struct TermsOfServiceView: View {
