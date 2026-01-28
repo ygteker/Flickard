@@ -157,8 +157,9 @@ struct PackRowView: View {
                 .font(.title2)
                 .foregroundStyle(Color.accentColor)
                 .frame(width: 44, height: 44)
-                .background(Color.accentColor.opacity(0.1))
+                .background(Color.accentColor.opacity(0.15))
                 .clipShape(RoundedRectangle(cornerRadius: 10))
+                .accessibilityHidden(true)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(pack.name)
@@ -192,6 +193,7 @@ struct PackRowView: View {
             Image(systemName: "chevron.right")
                 .font(.caption)
                 .foregroundStyle(.tertiary)
+                .accessibilityHidden(true)
         }
         .padding()
         .background(Color(.systemBackground))

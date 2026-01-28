@@ -6,6 +6,7 @@ struct PackCardPreviewView: View {
     let onAdd: () -> Void
 
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var isFlipped = false
     @State private var showHint = false
     @State private var hasAdded = false
@@ -38,7 +39,9 @@ struct PackCardPreviewView: View {
                     .degrees(isFlipped ? 180 : 0),
                     axis: (x: 0, y: 1, z: 0)
                 )
-                .animation(.spring(response: 0.5, dampingFraction: 0.7), value: isFlipped)
+                .animation(reduceMotion ? .none : .spring(response: 0.5, dampingFraction: 0.7), value: isFlipped)
+                .accessibilityLabel(isFlipped ? "Card back: \(card.back)" : "Card front: \(card.front)")
+                .accessibilityHint("Tap to flip card")
                 .onTapGesture {
                     isFlipped.toggle()
                 }
@@ -51,20 +54,23 @@ struct PackCardPreviewView: View {
                 if let hint = card.hint {
                     VStack(alignment: .leading, spacing: 8) {
                         Button {
-                            withAnimation {
+                            withAnimation(reduceMotion ? .none : .default) {
                                 showHint.toggle()
                             }
                         } label: {
                             HStack {
                                 Image(systemName: "lightbulb.fill")
                                     .foregroundStyle(.yellow)
+                                    .accessibilityHidden(true)
                                 Text("Hint")
                                     .fontWeight(.medium)
                                 Spacer()
                                 Image(systemName: showHint ? "chevron.up" : "chevron.down")
                                     .font(.caption)
+                                    .accessibilityHidden(true)
                             }
                         }
+                        .accessibilityLabel(showHint ? "Hide hint" : "Show hint")
                         .foregroundStyle(.primary)
 
                         if showHint {
@@ -85,6 +91,7 @@ struct PackCardPreviewView: View {
                         HStack {
                             Image(systemName: "text.quote")
                                 .foregroundStyle(Color.accentColor)
+                                .accessibilityHidden(true)
                             Text("Example")
                                 .fontWeight(.medium)
                         }
@@ -108,7 +115,7 @@ struct PackCardPreviewView: View {
                                 .font(.caption)
                                 .padding(.horizontal, 10)
                                 .padding(.vertical, 5)
-                                .background(Color.accentColor.opacity(0.1))
+                                .background(Color.accentColor.opacity(0.15))
                                 .foregroundStyle(Color.accentColor)
                                 .clipShape(Capsule())
                         }
@@ -125,6 +132,7 @@ struct PackCardPreviewView: View {
                 } label: {
                     HStack {
                         Image(systemName: hasAdded ? "checkmark.circle.fill" : "plus.circle.fill")
+                            .accessibilityHidden(true)
                         Text(hasAdded ? "Added" : "Add to My Cards")
                     }
                     .font(.headline)
@@ -134,6 +142,7 @@ struct PackCardPreviewView: View {
                     .foregroundStyle(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 14))
                 }
+                .accessibilityLabel(hasAdded ? "Card added" : "Add to My Cards")
                 .disabled(hasAdded)
             }
             .padding()
@@ -180,7 +189,7 @@ private struct CardFaceView: View {
         )
         .overlay(
             RoundedRectangle(cornerRadius: 16)
-                .stroke(isFront ? Color.accentColor.opacity(0.3) : Color.green.opacity(0.3), lineWidth: 2)
+                .stroke(isFront ? Color.accentColor.opacity(0.5) : Color.green.opacity(0.5), lineWidth: 2)
         )
     }
 }

@@ -15,10 +15,11 @@ struct CreateCardView: View {
                 TextField("Front", text: $frontValue)
                     .autocorrectionDisabled(true)
                     .textInputAutocapitalization(.never)
+                    .accessibilityLabel("Card front text")
                 TextField("Back", text: $backValue)
                     .autocorrectionDisabled(true)
                     .textInputAutocapitalization(.never)
-                    .textInputAutocapitalization(.never)
+                    .accessibilityLabel("Card back text")
             }
         }
         .navigationTitle("Create New Card")

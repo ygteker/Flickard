@@ -36,6 +36,7 @@ struct SwipeableCardsView: View {
 
     @ObservedObject var model: Model
     @Environment(\.modelContext) private var context
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var dragState = CGSize.zero
     @State private var cardRotation: Double = 0
     @State private var store: CardStore? = nil
@@ -97,7 +98,7 @@ struct SwipeableCardsView: View {
                                     if abs(self.dragState.width) > swipeThreshold {
                                         let swipeDirection: CardView.SwipeDirection = self.dragState.width > 0 ? .right : .left
                                         model.updateTopCardSwipeDirection(swipeDirection)
-                                        withAnimation(.easeOut(duration: 0.5)) {
+                                        withAnimation(reduceMotion ? .none : .easeOut(duration: 0.5)) {
                                             self.dragState.width = self.dragState.width > 0 ? 1000 : -1000
                                         }
                                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -106,7 +107,7 @@ struct SwipeableCardsView: View {
                                         }
                                         pendingSwipes.append((card.id, swipeDirection))
                                     } else {
-                                        withAnimation(.spring()) {
+                                        withAnimation(reduceMotion ? .none : .spring()) {
                                             self.dragState = .zero
                                             self.cardRotation = 0
                                         }
@@ -141,8 +142,10 @@ struct SwipeableCardsView: View {
     var emptyCardsView: some View {
         VStack(spacing: 16) {
             Image(systemName: "rectangle.stack.badge.plus")
-                .font(.system(size: 56))
+                .font(.largeTitle)
+                .imageScale(.large)
                 .foregroundStyle(.secondary)
+                .accessibilityHidden(true)
 
             Text("No Cards Yet")
                 .font(.title2)
@@ -157,8 +160,10 @@ struct SwipeableCardsView: View {
     var swipingCompletionView: some View {
         VStack(spacing: 24) {
             Image(systemName: "checkmark.circle.fill")
-                .font(.system(size: 64))
+                .font(.largeTitle)
+                .imageScale(.large)
                 .foregroundStyle(.green)
+                .accessibilityLabel("Completed")
 
             VStack(spacing: 8) {
                 Text("Well Done!")
@@ -175,6 +180,7 @@ struct SwipeableCardsView: View {
             } label: {
                 HStack {
                     Image(systemName: "arrow.counterclockwise")
+                        .accessibilityHidden(true)
                     Text("Practice Again")
                 }
                 .font(.headline)
@@ -184,6 +190,7 @@ struct SwipeableCardsView: View {
                 .foregroundStyle(.white)
                 .clipShape(RoundedRectangle(cornerRadius: 14))
             }
+            .accessibilityLabel("Practice Again")
             .padding(.horizontal, 40)
             .padding(.top, 8)
         }
@@ -203,14 +210,18 @@ private struct SwipeHintView: View {
             Image(systemName: direction == .left ? "xmark" : "checkmark")
                 .font(.title2)
                 .fontWeight(.bold)
+                .accessibilityHidden(true)
 
             Text(direction == .left ? "Still Learning" : "Got It")
                 .font(.caption2)
                 .fontWeight(.medium)
         }
         .foregroundStyle(direction == .left ? Color.red : Color.green)
-        .opacity(isActive ? 1.0 : 0.3)
-        .animation(.easeInOut(duration: 0.2), value: isActive)
+        .opacity(isActive ? 1.0 : 0.5)
+        .transaction { transaction in
+            transaction.animation = transaction.animation
+        }
+        .accessibilityLabel(direction == .left ? "Still Learning" : "Got It")
     }
 }
 

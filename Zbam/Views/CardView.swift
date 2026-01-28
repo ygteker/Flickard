@@ -13,6 +13,7 @@ struct CardView: View {
         var swipeDirection: SwipeDirection = .none
     }
 
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var isFlipped: Bool = false
 
     var model: Model
@@ -27,7 +28,7 @@ struct CardView: View {
         } else if dragOffset.width < 0 {
             return Color.red.opacity(0.6)
         } else {
-            return isFlipped ? Color.green.opacity(0.3) : Color.accentColor.opacity(0.3)
+            return isFlipped ? Color.green.opacity(0.5) : Color.accentColor.opacity(0.5)
         }
     }
 
@@ -68,7 +69,9 @@ struct CardView: View {
             .degrees(isFlipped ? 180 : 0),
             axis: (x: 0, y: 1, z: 0)
         )
-        .animation(.spring(response: 0.5, dampingFraction: 0.7), value: isFlipped)
+        .animation(reduceMotion ? .none : .spring(response: 0.5, dampingFraction: 0.7), value: isFlipped)
+        .accessibilityLabel(isFlipped ? "Card back: \(model.back)" : "Card front: \(model.front)")
+        .accessibilityHint("Tap to flip card")
         .onTapGesture {
             isFlipped.toggle()
         }

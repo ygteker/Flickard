@@ -57,6 +57,7 @@ struct SuggestionsView: View {
                             HStack {
                                 Image(systemName: result.usedAI ? "brain" : "lightbulb.fill")
                                     .foregroundStyle(result.usedAI ? .purple : .yellow)
+                                    .accessibilityHidden(true)
                                 Text(result.usedAI ? "AI Suggestions" : "Smart Suggestions")
                                     .font(.headline)
 
@@ -70,6 +71,7 @@ struct SuggestionsView: View {
                                     Image(systemName: "arrow.clockwise")
                                         .font(.subheadline)
                                 }
+                                .accessibilityLabel("Refresh suggestions")
                                 .buttonStyle(.bordered)
                                 .buttonBorderShape(.circle)
                             }
@@ -89,7 +91,7 @@ struct SuggestionsView: View {
                                             .font(.caption)
                                             .padding(.horizontal, 8)
                                             .padding(.vertical, 4)
-                                            .background(Color.accentColor.opacity(0.1))
+                                            .background(Color.accentColor.opacity(0.15))
                                             .foregroundStyle(Color.accentColor)
                                             .clipShape(Capsule())
                                     }
@@ -105,6 +107,7 @@ struct SuggestionsView: View {
                                 Image(systemName: "checkmark.seal.fill")
                                     .font(.largeTitle)
                                     .foregroundStyle(.green)
+                                    .accessibilityHidden(true)
                                 Text("You've added all available cards!")
                                     .font(.headline)
                                 Text("Check back later for new content packs.")
@@ -118,6 +121,7 @@ struct SuggestionsView: View {
                             Text("Recommended for you")
                                 .font(.headline)
                                 .padding(.top, 8)
+                                .accessibilityAddTraits(.isHeader)
 
                             ForEach(result.cards) { card in
                                 Button {
@@ -137,6 +141,7 @@ struct SuggestionsView: View {
                     Image(systemName: "sparkles")
                         .font(.largeTitle)
                         .foregroundStyle(Color.accentColor)
+                        .accessibilityHidden(true)
                     Text("No suggestions yet")
                         .font(.headline)
                     Text("Start swiping some cards to get personalized suggestions!")
@@ -236,6 +241,7 @@ struct SuggestionCardRow: View {
                     HStack(spacing: 4) {
                         Image(systemName: "lightbulb.min")
                             .font(.caption2)
+                            .accessibilityHidden(true)
                         Text(hint)
                             .font(.caption2)
                     }
@@ -262,6 +268,7 @@ struct SuggestionCardRow: View {
             Image(systemName: "plus.circle.fill")
                 .foregroundStyle(Color.accentColor)
                 .font(.title3)
+                .accessibilityLabel("Add card")
         }
         .padding()
         .background(Color(.systemBackground))

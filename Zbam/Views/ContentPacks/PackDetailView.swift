@@ -61,6 +61,7 @@ struct PackDetailView: View {
                                 Image(systemName: pack.iconName)
                                     .font(.title)
                                     .foregroundStyle(Color.accentColor)
+                                    .accessibilityHidden(true)
                                 Text(pack.name)
                                     .font(.title2)
                                     .fontWeight(.bold)
@@ -104,6 +105,7 @@ struct PackDetailView: View {
                                         }
                                     }
                                     .frame(height: 8)
+                                    .accessibilityValue("\(addedCards.count) of \(cards.count) cards added")
                                 }
                             }
                         }
@@ -117,6 +119,7 @@ struct PackDetailView: View {
                                 Text("Available Cards")
                                     .font(.headline)
                                     .padding(.horizontal, 4)
+                                    .accessibilityAddTraits(.isHeader)
 
                                 ForEach(unaddedCards) { card in
                                     Button {
@@ -135,6 +138,7 @@ struct PackDetailView: View {
                                     .font(.headline)
                                     .padding(.horizontal, 4)
                                     .foregroundStyle(.secondary)
+                                    .accessibilityAddTraits(.isHeader)
 
                                 ForEach(addedCards) { card in
                                     PackCardRowView(card: card, isAdded: true)
@@ -271,10 +275,12 @@ struct PackCardRowView: View {
             if isAdded {
                 Image(systemName: "checkmark.circle.fill")
                     .foregroundStyle(.green)
+                    .accessibilityLabel("Card already added")
             } else {
                 Image(systemName: "chevron.right")
                     .font(.caption)
                     .foregroundStyle(.tertiary)
+                    .accessibilityHidden(true)
             }
         }
         .padding()
