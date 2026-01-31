@@ -329,61 +329,6 @@
       "tags": [
         "Science"
       ]
-    },
-    {
-      "id": "de-tr-a1-animals",
-      "name": "Almanca A1: Hayvanlar",
-      "description": "Yaygın hayvanlar ve evcil hayvan kelimeleri.",
-      "difficultyLevel": "beginner",
-      "cardCount": 15,
-      "iconName": "pawprint.fill",
-      "tags": [
-        "Nature"
-      ]
-    },
-    {
-      "id": "de-tr-a1-colors-numbers",
-      "name": "Almanca A1: Renkler ve Sayılar",
-      "description": "Temel renkler ve 1-100 arası sayılar.",
-      "difficultyLevel": "beginner",
-      "cardCount": 20,
-      "iconName": "paintpalette.fill",
-      "tags": [
-        "Nature"
-      ]
-    },
-    {
-      "id": "de-tr-a1-everyday",
-      "name": "Almanca A1: Günlük Eşyalar",
-      "description": "Yeni başlayanlar için günlük ev eşyaları.",
-      "difficultyLevel": "beginner",
-      "cardCount": 15,
-      "iconName": "house.fill",
-      "tags": [
-        "Daily Life"
-      ]
-    },
-    {
-      "id": "de-tr-a1-family",
-      "name": "Almanca A1: Aile ve İnsanlar",
-      "description": "Aile üyeleri ve insanlarla ilgili kelimeler.",
-      "difficultyLevel": "beginner",
-      "cardCount": 15,
-      "iconName": "person.3.fill",
-      "tags": [
-        "People"
-      ]
-    },
-    {
-      "id": "de-tr-a1-food",
-      "name": "Almanca A1: Yiyecek ve İçecek",
-      "description": "Günlük hayat için temel yiyecek ve içecek kelimeleri.",
-      "difficultyLevel": "beginner",
-      "cardCount": 15,
-      "iconName": "fork.knife",
-      "tags": [
-        "Daily Life"
-      ]
     }
   ]
 }
