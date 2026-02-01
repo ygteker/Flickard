@@ -1,6 +1,6 @@
 <div align="center">
 
-# Zbam
+# Flickard
 
 **A modern flashcard learning app with swipe-based interaction**
 
@@ -18,23 +18,34 @@
 
 ## Overview
 
-Zbam is an intuitive iOS flashcard application that transforms learning into an engaging experience. Using familiar swipe gestures, users can interact with flashcards in a fun, Tinder-like interface while tracking their progress through beautiful visualizations.
+Flickard is an intuitive iOS flashcard application that transforms learning into an engaging experience. Using familiar swipe gestures, users can interact with flashcards in a fun, Tinder-like interface while tracking their progress through beautiful visualizations.
 
-Whether you're learning a new language, studying for exams, or memorizing anything else — Zbam makes the process smooth and enjoyable.
+The app comes bundled with **36 vocabulary packs** for German-English learning, organized by CEFR difficulty levels (A1-C2). An AI-powered suggestion engine recommends cards tailored to your learning profile.
+
+Whether you're learning a new language, studying for exams, or memorizing anything else — Flickard makes the process smooth and enjoyable.
 
 ## Features
 
 ### Swipe to Learn
-Interact with flashcards using intuitive swipe gestures. Swipe right when you know it, left when you don't. Tap to flip and reveal the answer.
+Interact with flashcards using intuitive swipe gestures with haptic feedback. Swipe right when you know it, left when you don't. Tap to flip and reveal the answer.
 
 ### Smart Progress Tracking
-Every swipe is recorded. Zbam maintains a history of your responses for each card, helping you identify which cards need more practice.
+Every swipe is recorded. Flickard maintains a history of your responses for each card, helping you identify which cards need more practice.
 
 ### Visual Statistics
 Beautiful pie charts and detailed breakdowns show your learning progress at a glance. See which cards you've mastered and which need attention.
 
 ### Card Management
 Create, edit, and organize your flashcards with ease. View swipe history for individual cards and track your improvement over time.
+
+### Content Packs
+Browse and add from 36 pre-built vocabulary packs covering German-English vocabulary at various CEFR difficulty levels:
+- **A1 (Beginner):** Animals, Body Parts, Clothing, Colors & Numbers, Everyday Items, Family, Food & Drink, Greetings, School & Learning, Time & Calendar
+- **A2 (Elementary):** City & Directions, Communication, Emotions, Health, Hobbies, Home & Living, Shopping, Travel, Weather, Work
+- **B1 (Intermediate):** Business, Culture & Arts, Education, Environment, Law & Justice, Media, Relationships, Science, Society, Technology
+
+### AI-Powered Suggestions
+Personalized card recommendations based on your learning profile. The suggestion engine analyzes your swipe history, identifies weak areas, and recommends cards at the right difficulty level. Uses on-device AI (iOS 26+) with a smart heuristic fallback for older devices.
 
 ## Screenshots
 
@@ -61,25 +72,41 @@ Create, edit, and organize your flashcards with ease. View swipe history for ind
 | **SwiftData** | Data persistence |
 | **Charts** | Statistics visualization |
 | **Combine** | Reactive state management |
+| **FoundationModels** | On-device AI suggestions (iOS 26+) |
+| **OSLog** | Structured logging |
 
 ## Project Structure
 
 ```
-Zbam/
-├── ZbamApp.swift                 # App entry point & model container
+Flickard/
+├── FlickardApp.swift              # App entry point & model container
 ├── Models/
-│   └── Card.swift                # Flashcard data model
+│   ├── Card.swift                 # User's flashcard data model
+│   ├── ContentPack.swift          # Pack metadata & difficulty levels
+│   ├── PackCard.swift             # Card within a content pack
+│   └── UserPackProgress.swift     # Track added pack cards
 ├── Views/
-│   ├── ContentView.swift         # Main tab navigation
-│   ├── SwipeableCardsView.swift  # Swipe interaction interface
-│   ├── CardView.swift            # Flippable card component
-│   ├── CardsListView.swift       # Card management list
-│   ├── StatsView.swift           # Statistics dashboard
-│   ├── CreateCardView.swift      # New card form
-│   ├── CardEditView.swift        # Edit card form
-│   └── SettingsView.swift        # App settings
-└── Stores/
-    └── CardStore.swift           # Data access layer
+│   ├── ContentView.swift          # Main tab navigation
+│   ├── SwipeableCardsView.swift   # Swipe interaction interface
+│   ├── CardView.swift             # Flippable card component
+│   ├── CardsListView.swift        # Card management list
+│   ├── StatsView.swift            # Statistics dashboard
+│   ├── CreateCardView.swift       # New card form
+│   ├── CardEditView.swift         # Edit card form
+│   ├── SettingsView.swift         # App settings
+│   └── ContentPacks/
+│       ├── ContentPacksTabView.swift   # Pack hub with tabs
+│       ├── ContentPacksView.swift      # Browse all packs
+│       ├── PackDetailView.swift        # Individual pack details
+│       └── SuggestionsView.swift       # AI recommendations
+├── Stores/
+│   └── CardStore.swift            # Data access layer
+├── Services/
+│   ├── ContentPackLoader.swift    # Bundle JSON loader with caching
+│   └── SuggestionEngine.swift     # AI/heuristic recommendation engine
+└── ContentPacks/
+    ├── pack-manifest.json         # List of all available packs
+    └── *.json                     # 36 vocabulary pack files
 ```
 
 ## Requirements
@@ -92,13 +119,13 @@ Zbam/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/ygteker/Zbam.git
+   git clone https://github.com/ygteker/Flickard.git
    ```
 
 2. **Open in Xcode**
    ```bash
-   cd Zbam
-   open Zbam.xcodeproj
+   cd Flickard
+   open Flickard.xcodeproj
    ```
 
 3. **Build and run**
@@ -109,6 +136,11 @@ Zbam/
 
 ### Creating Cards
 Tap the `+` button in the Cards tab to create a new flashcard. Enter the front (question) and back (answer) content.
+
+### Adding Content Packs
+Navigate to the Packs tab to browse pre-built vocabulary:
+- **For You** — AI-powered personalized recommendations
+- **Browse** — Explore all packs organized by difficulty level
 
 ### Studying
 Navigate to the Swipe tab and start learning:
@@ -122,11 +154,12 @@ Each card maintains a history of your last 10 swipes, visualized as a colored ba
 
 ## Architecture
 
-Zbam follows a clean architecture pattern with clear separation of concerns:
+Flickard follows a clean architecture pattern with clear separation of concerns:
 
 - **Models** — Data structures with SwiftData persistence
 - **Views** — SwiftUI components with declarative UI
 - **Stores** — Data access and business logic layer
+- **Services** — Specialized services (content loading, AI suggestions)
 
 The app leverages SwiftData's `@Model` macro for automatic persistence and SwiftUI's `@Query` for reactive data binding.
 
@@ -148,6 +181,7 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 
 - Built with Apple's modern frameworks
 - Inspired by spaced repetition learning techniques
+- CEFR difficulty levels for structured language learning progression
 
 ---
 
