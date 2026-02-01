@@ -1,6 +1,6 @@
 <div align="center">
 
-# Zbam
+# Flickard
 
 **A modern flashcard learning app with swipe-based interaction**
 
@@ -18,9 +18,9 @@
 
 ## Overview
 
-Zbam is an intuitive iOS flashcard application that transforms learning into an engaging experience. Using familiar swipe gestures, users can interact with flashcards in a fun, Tinder-like interface while tracking their progress through beautiful visualizations.
+Flickard is an intuitive iOS flashcard application that transforms learning into an engaging experience. Using familiar swipe gestures, users can interact with flashcards in a fun, Tinder-like interface while tracking their progress through beautiful visualizations.
 
-Whether you're learning a new language, studying for exams, or memorizing anything else — Zbam makes the process smooth and enjoyable.
+Whether you're learning a new language, studying for exams, or memorizing anything else — Flickard makes the process smooth and enjoyable.
 
 ## Features
 
@@ -28,7 +28,7 @@ Whether you're learning a new language, studying for exams, or memorizing anythi
 Interact with flashcards using intuitive swipe gestures. Swipe right when you know it, left when you don't. Tap to flip and reveal the answer.
 
 ### Smart Progress Tracking
-Every swipe is recorded. Zbam maintains a history of your responses for each card, helping you identify which cards need more practice.
+Every swipe is recorded. Flickard maintains a history of your responses for each card, helping you identify which cards need more practice.
 
 ### Visual Statistics
 Beautiful pie charts and detailed breakdowns show your learning progress at a glance. See which cards you've mastered and which need attention.
@@ -65,8 +65,8 @@ Create, edit, and organize your flashcards with ease. View swipe history for ind
 ## Project Structure
 
 ```
-Zbam/
-├── ZbamApp.swift                 # App entry point & model container
+Flickard/
+├── FlickardApp.swift                 # App entry point & model container
 ├── Models/
 │   └── Card.swift                # Flashcard data model
 ├── Views/
@@ -92,13 +92,13 @@ Zbam/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/ygteker/Zbam.git
+   git clone https://github.com/ygteker/Flickard.git
    ```
 
 2. **Open in Xcode**
    ```bash
-   cd Zbam
-   open Zbam.xcodeproj
+   cd Flickard
+   open Flickard.xcodeproj
    ```
 
 3. **Build and run**
@@ -122,7 +122,7 @@ Each card maintains a history of your last 10 swipes, visualized as a colored ba
 
 ## Architecture
 
-Zbam follows a clean architecture pattern with clear separation of concerns:
+Flickard follows a clean architecture pattern with clear separation of concerns:
 
 - **Models** — Data structures with SwiftData persistence
 - **Views** — SwiftUI components with declarative UI
