@@ -55,11 +55,17 @@ Personalized card recommendations based on your learning profile. The suggestion
     <td align="center"><b>Swipe</b></td>
     <td align="center"><b>Cards</b></td>
     <td align="center"><b>Stats</b></td>
+    <td align="center"><b>Stats</b></td>
+    <td align="center"><b>Stats</b></td>
+    <td align="center"><b>Stats</b></td>
   </tr>
   <tr>
-    <td><img src="screenshots/swipe.png" width="200"/></td>
-    <td><img src="screenshots/cards.png" width="200"/></td>
-    <td><img src="screenshots/stats.png" width="200"/></td>
+    <td><img src="screenshots/screenshot_1.png" width="200"/></td>
+    <td><img src="screenshots/screenshot_2.png" width="200"/></td>
+    <td><img src="screenshots/screenshot_3.png" width="200"/></td>
+    <td><img src="screenshots/screenshot_4.png" width="200"/></td>
+    <td><img src="screenshots/screenshot_5.png" width="200"/></td>
+    <td><img src="screenshots/screenshot_6.png" width="200"/></td>
   </tr>
 </table>
 </div>
