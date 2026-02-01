@@ -90,6 +90,7 @@ struct CardEditView: View {
     }
 }
 
+@available(iOS 18.0, *)
 #Preview(Card.sampleData.first?.front ?? "Edit Card", traits: .cardSampleData) {
     if let first = Card.sampleData.first {
         NavigationStack {

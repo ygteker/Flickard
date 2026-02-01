@@ -68,8 +68,9 @@ struct CardsListView: View {
     }
 }
 
-#Preview(traits: .cardSampleData) {
+#Preview {
     CardsListView()
+        .modelContainer(for: Card.self, inMemory: true)
 }
 // MARK: - Card Row View with Expandable Stats
 

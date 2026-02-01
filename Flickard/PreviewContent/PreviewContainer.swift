@@ -14,6 +14,7 @@ struct CardSampleData: PreviewModifier {
     }
 }
 
+@available(iOS 18.0, *)
 extension PreviewTrait where T == Preview.ViewTraits {
     @MainActor static var cardSampleData: Self = .modifier(CardSampleData())
 }
