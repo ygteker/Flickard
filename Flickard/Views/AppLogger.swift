@@ -22,4 +22,7 @@ enum AppLogger {
 
     /// AI suggestions and recommendations
     static let suggestions = Logger(subsystem: "com.flickard.app", category: "suggestions")
+
+    /// Stack operations (create, edit, AI management)
+    static let stacks = Logger(subsystem: "com.flickard.app", category: "stacks")
 }

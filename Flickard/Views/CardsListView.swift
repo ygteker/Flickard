@@ -2,51 +2,54 @@ import SwiftUI
 import SwiftData
 
 struct CardsListView: View {
+    enum Segment: String, CaseIterable {
+        case allCards = "All Cards"
+        case stacks = "Stacks"
+    }
+
     @Environment(\.modelContext) private var modelContext
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Query(sort: \Card.front) private var cards: [Card]
+    @Query(sort: \Stack.createdAt) private var stacks: [Stack]
     @State private var isAddingCard: Bool = false
     @State private var editingCard: Card? = nil
     @State private var expandedCardId: UUID? = nil
-    
+    @State private var selectedSegment: Segment = .allCards
+
     var body: some View {
         NavigationStack {
-            List {
-                ForEach(cards, id: \.id) { card in
-                    CardRowView(
-                        card: card,
-                        isExpanded: expandedCardId == card.id,
-                        onTap: {
-                            withAnimation(reduceMotion ? .none : .easeInOut(duration: 0.25)) {
-                                if expandedCardId == card.id {
-                                    expandedCardId = nil
-                                } else {
-                                    expandedCardId = card.id
-                                }
-                            }
-                        },
-                        onEdit: {
-                            editingCard = card
-                        }
-                    )
+            VStack(spacing: 0) {
+                Picker("View", selection: $selectedSegment) {
+                    ForEach(Segment.allCases, id: \.self) { segment in
+                        Text(segment.rawValue).tag(segment)
+                    }
                 }
-                .onDelete(perform: deleteCard)
+                .pickerStyle(.segmented)
+                .padding(.horizontal)
+                .padding(.vertical, 8)
+
+                switch selectedSegment {
+                case .allCards:
+                    allCardsListView
+                case .stacks:
+                    StackListView()
+                }
             }
-            
             .navigationTitle("Cards")
             .toolbar {
-                Button(action: {
-                    DispatchQueue.main.async {
-                        isAddingCard = true
+                if selectedSegment == .allCards {
+                    Button(action: {
+                        DispatchQueue.main.async {
+                            isAddingCard = true
+                        }
+                    }) {
+                        Image(systemName: "plus")
                     }
-                }) {
-                    Image(systemName: "plus")
+                    .accessibilityLabel("Add new card")
                 }
-                .accessibilityLabel("Add new card")
             }
             .sheet(isPresented: $isAddingCard) {
                 NavigationStack {
-                    // Use the creation view that has a no-arg initializer
                     CreateCardView()
                         .navigationTitle("Create New Card")
                 }
@@ -59,12 +62,37 @@ struct CardsListView: View {
             }
         }
     }
+
+    private var allCardsListView: some View {
+        List {
+            ForEach(cards, id: \.id) { card in
+                CardRowView(
+                    card: card,
+                    isExpanded: expandedCardId == card.id,
+                    onTap: {
+                        withAnimation(reduceMotion ? .none : .easeInOut(duration: 0.25)) {
+                            if expandedCardId == card.id {
+                                expandedCardId = nil
+                            } else {
+                                expandedCardId = card.id
+                            }
+                        }
+                    },
+                    onEdit: {
+                        editingCard = card
+                    }
+                )
+            }
+            .onDelete(perform: deleteCard)
+        }
+    }
+
     private func deleteCard(at offsets: IndexSet) {
+        let store = CardStore(context: modelContext)
         for index in offsets {
             let card = cards[index]
-            modelContext.delete(card)
+            try? store.deleteCardAndCleanStacks(card)
         }
-        try? modelContext.save()
     }
 }
 

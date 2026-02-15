@@ -12,6 +12,7 @@ struct CardView: View {
         let front: String
         let back: String
         var swipeDirection: SwipeDirection = .none
+        var isMastered: Bool = false
     }
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -52,7 +53,8 @@ struct CardView: View {
                 isFront: true,
                 size: size,
                 borderColor: borderColor,
-                shadowColor: isTopCard ? shadowColor : (isSecondCard && dragOffset.width != 0 ? Color.gray.opacity(0.2) : Color.clear)
+                shadowColor: isTopCard ? shadowColor : (isSecondCard && dragOffset.width != 0 ? Color.gray.opacity(0.2) : Color.clear),
+                isMastered: model.isMastered
             )
             .opacity(isFlipped ? 0 : 1)
 
@@ -62,7 +64,8 @@ struct CardView: View {
                 isFront: false,
                 size: size,
                 borderColor: borderColor,
-                shadowColor: isTopCard ? shadowColor : (isSecondCard && dragOffset.width != 0 ? Color.gray.opacity(0.2) : Color.clear)
+                shadowColor: isTopCard ? shadowColor : (isSecondCard && dragOffset.width != 0 ? Color.gray.opacity(0.2) : Color.clear),
+                isMastered: model.isMastered
             )
             .opacity(isFlipped ? 1 : 0)
             .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
@@ -92,6 +95,7 @@ private struct SwipeCardFace: View {
     let size: CGSize
     let borderColor: Color
     let shadowColor: Color
+    var isMastered: Bool = false
 
     var body: some View {
         VStack {
@@ -121,6 +125,15 @@ private struct SwipeCardFace: View {
             RoundedRectangle(cornerRadius: 16)
                 .stroke(borderColor, lineWidth: 2)
         )
+        .overlay(alignment: .topTrailing) {
+            if isMastered {
+                Image(systemName: "checkmark.seal.fill")
+                    .font(.title3)
+                    .foregroundStyle(.green)
+                    .padding(12)
+            }
+        }
+        .opacity(isMastered ? 0.5 : 1.0)
     }
 }
 

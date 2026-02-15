@@ -44,6 +44,10 @@ struct SwipeableCardsView: View {
     @State private var store: CardStore? = nil
     @State private var pendingSwipes: [(UUID, CardView.SwipeDirection)] = []
     @State private var lastHapticPosition: CGFloat = 0
+    @State private var aiSessionResult: StackAIManager.SessionResult?
+    @State private var isAnalyzingSession = false
+
+    var stack: Stack? = nil
 
     private let swipeThreshold: CGFloat = 100.0
     private let rotationFactor: Double = 35.0
@@ -203,6 +207,39 @@ struct SwipeableCardsView: View {
                     .foregroundStyle(.secondary)
             }
 
+            // AI session summary
+            if isAnalyzingSession {
+                HStack(spacing: 8) {
+                    ProgressView()
+                    Text("Analyzing session...")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+            } else if let result = aiSessionResult {
+                VStack(spacing: 6) {
+                    if result.cardsAdded > 0 || result.cardsDuplicated > 0 || result.cardsMastered > 0 {
+                        HStack(spacing: 16) {
+                            if result.cardsAdded > 0 {
+                                Label("\(result.cardsAdded) added", systemImage: "plus.circle.fill")
+                                    .font(.caption)
+                                    .foregroundStyle(.blue)
+                            }
+                            if result.cardsDuplicated > 0 {
+                                Label("\(result.cardsDuplicated) reinforced", systemImage: "arrow.triangle.2.circlepath")
+                                    .font(.caption)
+                                    .foregroundStyle(.orange)
+                            }
+                            if result.cardsMastered > 0 {
+                                Label("\(result.cardsMastered) mastered", systemImage: "checkmark.seal.fill")
+                                    .font(.caption)
+                                    .foregroundStyle(.green)
+                            }
+                        }
+                    }
+                }
+                .padding(.horizontal, 20)
+            }
+
             Button {
                 action(model)
             } label: {
@@ -222,6 +259,22 @@ struct SwipeableCardsView: View {
             .padding(.horizontal, 40)
             .padding(.top, 8)
         }
+        .task(id: model.unswipedCards.isEmpty && !model.swipedCards.isEmpty) {
+            guard model.unswipedCards.isEmpty && !model.swipedCards.isEmpty else { return }
+            await runAIAnalysis()
+        }
+    }
+
+    private func runAIAnalysis() async {
+        guard let stack = stack, stack.isAIManaged, !pendingSwipes.isEmpty else { return }
+        isAnalyzingSession = true
+        let result = await StackAIManager.shared.analyzeSession(
+            stack: stack,
+            swipeResults: pendingSwipes,
+            context: context
+        )
+        aiSessionResult = result
+        isAnalyzingSession = false
     }
 }
 

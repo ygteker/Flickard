@@ -20,6 +20,6 @@ struct FlickardApp: App {
             ContentView()
                 .preferredColorScheme(darkMode ? .dark : .light)
         }
-        .modelContainer(for: [Card.self, UserPackProgress.self])
+        .modelContainer(for: [Card.self, UserPackProgress.self, Stack.self])
     }
 }

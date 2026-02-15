@@ -60,6 +60,24 @@ final class CardStore: ObservableObject {
         AppLogger.packs.info("Added card \(packCard.id) from pack \(packCard.packId)")
     }
 
+    /// Fetch cards by a set of UUIDs
+    func cards(ids: Set<UUID>) throws -> [Card] {
+        let allCards = try context.fetch(FetchDescriptor<Card>())
+        return allCards.filter { ids.contains($0.id) }
+    }
+
+    /// Delete a card and remove it from all stacks
+    func deleteCardAndCleanStacks(_ card: Card) throws {
+        let cardId = card.id
+        let stacks = try context.fetch(FetchDescriptor<Stack>())
+        for stack in stacks {
+            stack.removeCard(cardId)
+        }
+        context.delete(card)
+        try context.save()
+        AppLogger.stacks.info("Deleted card \(cardId) and cleaned from \(stacks.count) stacks")
+    }
+
     /// Get or create a UserPackProgress for a given pack ID
     func getOrCreateProgress(for packId: String) throws -> UserPackProgress {
         let descriptor = FetchDescriptor<UserPackProgress>(
